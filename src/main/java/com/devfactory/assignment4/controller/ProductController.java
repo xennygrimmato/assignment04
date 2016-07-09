@@ -41,9 +41,13 @@ public class ProductController {
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.GET)
-    public ResponseEntity<Product> getProduct(@PathVariable int id) {
+    public ResponseEntity<Object> getProduct(@PathVariable int id) {
         Product product = productRepo.findOne(id);
-        return new ResponseEntity<Product>(product, HttpStatus.OK);
+        if(product.getDeleted() == 1) {
+            return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<Object>(product, HttpStatus.OK);
+        }
     }
 
     @RequestMapping(value="/products", method=RequestMethod.POST)
