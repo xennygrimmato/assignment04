@@ -43,6 +43,9 @@ public class ProductController {
     @RequestMapping(value="/products/{id}", method=RequestMethod.GET)
     public ResponseEntity<Object> getProduct(@PathVariable int id) {
         Product product = productRepo.findOne(id);
+        if(product == null) {
+            return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
+        }
         if(product.getDeleted() == 1) {
             return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
         } else {
@@ -158,7 +161,7 @@ public class ProductController {
         } catch(Exception e) {
             LOGGER.error(e.getMessage());
         }
-        return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.DELETE)
@@ -173,7 +176,8 @@ public class ProductController {
 
             p.setDeleted(1);
             productRepo.save(p);
-            return new ResponseEntity<Object>(null, HttpStatus.OK);
+            Map<String, String> empty = new HashMap<String, String>();
+            return new ResponseEntity<Object>(empty, HttpStatus.OK);
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
