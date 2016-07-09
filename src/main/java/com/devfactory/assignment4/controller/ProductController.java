@@ -29,7 +29,7 @@ public class ProductController {
     ProductRepository productRepo;
 
     @RequestMapping("/products")
-    public List<Product> products(@RequestParam(value="name", required = false) String name) {
+    public ResponseEntity products(@RequestParam(value="name", required = false) String name) {
         List<Product> products = new ArrayList<Product>();
         for(Product p : productRepo.findAll()) {
             if (p.getDeleted() == 0) {
@@ -37,15 +37,25 @@ public class ProductController {
                 products.add(p);
             }
         }
-        return products;
+        return new ResponseEntity(products, HttpStatus.OK);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.GET)
     public ResponseEntity<Object> getProduct(@PathVariable int id) {
         Product product = productRepo.findOne(id);
+
         if(product == null) {
-            return new ResponseEntity<Object>(null, HttpStatus.OK);
+            Map<String,String> detailObject = new HashMap<String,String>();
+            detailObject.put("detail", "Not found.");
+            return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
         }
+
+        if(product.getDeleted() == 1) {
+            Map<String,String> detailObject = new HashMap<String,String>();
+            detailObject.put("detail", "Not found.");
+            return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
+        }
+
         if(product.getDeleted() == 1) {
             return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
         } else {
@@ -78,6 +88,12 @@ public class ProductController {
             Product p = productRepo.findOne(id);
 
             if(p == null) {
+                Map<String,String> detailObject = new HashMap<String,String>();
+                detailObject.put("detail", "Not found.");
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
+            }
+
+            if(p.getDeleted() == 1) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
                 return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
@@ -135,6 +151,12 @@ public class ProductController {
                 return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
+            if(p.getDeleted() == 1) {
+                Map<String,String> detailObject = new HashMap<String,String>();
+                detailObject.put("detail", "Not found.");
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
+            }
+
             if(!StringUtils.isBlank(product.getCode())) {
                 p.setCode(product.getCode());
             }
@@ -171,7 +193,12 @@ public class ProductController {
             if(p == null) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
-                return new ResponseEntity<Object>(detailObject, HttpStatus.OK);
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
+            }
+            if(p.getDeleted() == 1) {
+                Map<String,String> detailObject = new HashMap<String,String>();
+                detailObject.put("detail", "Not found.");
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
             p.setDeleted(1);
