@@ -10,7 +10,9 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,8 +43,9 @@ public class ProductController {
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.GET)
-    public Product products(@PathVariable int id) {
-        return productRepo.findOne(id);
+    public ResponseEntity<Product> getProduct(@PathVariable int id) {
+        Product product = productRepo.findOne(id);
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
     @RequestMapping(value="/products", method=RequestMethod.POST)
@@ -59,7 +62,7 @@ public class ProductController {
             LOGGER.error(e.getMessage());
         }
         //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.PUT)
@@ -72,7 +75,7 @@ public class ProductController {
             if(p == null) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
-                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
+                return new ResponseEntity<Object>(detailObject, HttpStatus.OK);
             }
 
             if(StringUtils.isBlank(product.getCode())) {
@@ -124,7 +127,7 @@ public class ProductController {
             if(p == null) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
-                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
+                return new ResponseEntity<Object>(detailObject, HttpStatus.OK);
             }
 
             if(!StringUtils.isBlank(product.getCode())) {
@@ -174,6 +177,8 @@ public class ProductController {
             LOGGER.error(e.getMessage());
         }
         Map<String, String> empty = new HashMap<String, String>();
-        return new ResponseEntity<Object>(empty, HttpStatus.OK);
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setContentType(MediaType.APPLICATION_JSON);
+        return new ResponseEntity<Object>(empty, responseHeaders, HttpStatus.OK);
     }
 }
