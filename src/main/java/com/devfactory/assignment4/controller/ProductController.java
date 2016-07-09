@@ -6,7 +6,6 @@ package com.devfactory.assignment4.controller;
 
 import com.devfactory.assignment4.model.Product;
 import com.devfactory.assignment4.repository.ProductRepository;
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static org.apache.commons.lang.StringUtils.isBlank;
 
 @RequestMapping("/api")
 @RestController
@@ -62,12 +63,18 @@ public class ProductController {
     @RequestMapping(value="/products", method=RequestMethod.POST)
     public ResponseEntity<Product> products(@RequestBody Product product) {
         try {
-            if (StringUtils.isBlank(product.getCode())) {
+            if (isBlank(product.getCode())) {
                 //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
             }
 
-            productRepo.save(product);
-            return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+            Product p = new Product();
+
+            if(!isBlank(product.getName())) p.setName(product.getName());
+            if(!isBlank(product.getCode())) p.setCode(product.getCode());
+            if(product.getRemaining() == null) p.setRemaining(product.getRemaining());
+
+            productRepo.save(p);
+            return new ResponseEntity<Product>(p, HttpStatus.CREATED);
         } catch(Exception e) {
             // Log error
             LOGGER.error(e.getMessage());
@@ -95,7 +102,7 @@ public class ProductController {
                 return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
-            if(StringUtils.isBlank(product.getCode())) {
+            if(isBlank(product.getCode())) {
                 // code is a compulsory field
                 // return BAD_REQUEST if it is not part of request body
                 return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
@@ -103,13 +110,13 @@ public class ProductController {
                 p.setCode(product.getCode());
             }
 
-            if (StringUtils.isBlank(product.getName())) {
+            if (isBlank(product.getName())) {
                 p.setName("");
             } else {
                 p.setName(product.getName());
             }
 
-            if (StringUtils.isBlank(product.getDescription())) {
+            if (isBlank(product.getDescription())) {
                 // description: default value = ""
                 p.setDescription("");
             } else {
@@ -153,15 +160,15 @@ public class ProductController {
                 return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
-            if(!StringUtils.isBlank(product.getCode())) {
+            if(!isBlank(product.getCode())) {
                 p.setCode(product.getCode());
             }
 
-            if(!StringUtils.isBlank(product.getName())) {
+            if(!isBlank(product.getName())) {
                 p.setName(product.getName());
             }
 
-            if(!StringUtils.isBlank(product.getDescription())) {
+            if(!isBlank(product.getDescription())) {
                 p.setDescription(product.getDescription());
             }
 
