@@ -4,7 +4,6 @@
     <list default="true" id="edefb0c2-e0a4-4f49-afed-02d506fb3bbd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java" afterPath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java" afterPath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java" />
     </list>
     <ignored path="assignment04A.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,21 +28,21 @@
       <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+            <state relative-caret-position="-394">
+              <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding>
-                <element signature="e#980#989#0" expanded="true" />
-                <element signature="e#1577#1592#0" expanded="true" />
-                <element signature="e#1841#1856#0" expanded="true" />
-                <element signature="e#2344#2359#0" expanded="true" />
-                <element signature="e#3524#3539#0" expanded="true" />
-                <element signature="e#3802#3817#0" expanded="true" />
-                <element signature="e#5590#5605#0" expanded="true" />
-                <element signature="e#5868#5883#0" expanded="true" />
-                <element signature="e#7176#7191#0" expanded="true" />
-                <element signature="e#7453#7468#0" expanded="true" />
-                <element signature="e#7745#7761#0" expanded="true" />
-                <element signature="e#7966#7982#0" expanded="true" />
+                <element signature="e#1213#1228#0" expanded="true" />
+                <element signature="e#1477#1492#0" expanded="true" />
+                <element signature="e#1979#1994#0" expanded="true" />
+                <element signature="e#2895#2910#0" expanded="true" />
+                <element signature="e#3173#3188#0" expanded="true" />
+                <element signature="e#3575#3590#0" expanded="true" />
+                <element signature="e#4641#4656#0" expanded="true" />
+                <element signature="e#4919#4934#0" expanded="true" />
+                <element signature="e#6221#6236#0" expanded="true" />
+                <element signature="e#6498#6513#0" expanded="true" />
+                <element signature="e#6790#6806#0" expanded="true" />
+                <element signature="e#7011#7027#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,7 +51,7 @@
       <file leaf-file-name="Product.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
+            <state relative-caret-position="-214">
               <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
               <folding />
             </state>
@@ -82,8 +81,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java" />
       </list>
     </option>
   </component>
@@ -588,28 +587,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+        <state relative-caret-position="-394">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
           <folding>
-            <element signature="e#980#989#0" expanded="true" />
-            <element signature="e#1577#1592#0" expanded="true" />
-            <element signature="e#1841#1856#0" expanded="true" />
-            <element signature="e#2344#2359#0" expanded="true" />
-            <element signature="e#3524#3539#0" expanded="true" />
-            <element signature="e#3802#3817#0" expanded="true" />
-            <element signature="e#5590#5605#0" expanded="true" />
-            <element signature="e#5868#5883#0" expanded="true" />
-            <element signature="e#7176#7191#0" expanded="true" />
-            <element signature="e#7453#7468#0" expanded="true" />
-            <element signature="e#7745#7761#0" expanded="true" />
-            <element signature="e#7966#7982#0" expanded="true" />
+            <element signature="e#1213#1228#0" expanded="true" />
+            <element signature="e#1477#1492#0" expanded="true" />
+            <element signature="e#1979#1994#0" expanded="true" />
+            <element signature="e#2895#2910#0" expanded="true" />
+            <element signature="e#3173#3188#0" expanded="true" />
+            <element signature="e#3575#3590#0" expanded="true" />
+            <element signature="e#4641#4656#0" expanded="true" />
+            <element signature="e#4919#4934#0" expanded="true" />
+            <element signature="e#6221#6236#0" expanded="true" />
+            <element signature="e#6498#6513#0" expanded="true" />
+            <element signature="e#6790#6806#0" expanded="true" />
+            <element signature="e#7011#7027#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
+        <state relative-caret-position="-214">
           <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
           <folding />
         </state>
