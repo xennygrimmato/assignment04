@@ -52,13 +52,14 @@ public class ProductController {
 
     @RequestMapping(value="/products", method=RequestMethod.POST)
     public ResponseEntity<Object> products(@RequestBody Product product) {
-        if (product.getCode() == null) {
+        String code = product.getCode();
+        if(code == null) {
             Map<String,String> detailObject = new HashMap<String,String>();
             detailObject.put("detail", "Not found.");
             return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
         }
 
-        productRepo.save(product);
+        Product p = productRepo.save(product);
         return new ResponseEntity<Object>(product, HttpStatus.CREATED);
     }
 

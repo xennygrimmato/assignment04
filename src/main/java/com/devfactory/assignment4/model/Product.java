@@ -15,10 +15,10 @@ public class Product {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
-    private String name;
+    private String name = "";
     private String code;
-    private Integer remaining;
-    private String description;
+    private Integer remaining = 0;
+    private String description = "";
     private Integer deleted = 0;
 
     public Product() {}
