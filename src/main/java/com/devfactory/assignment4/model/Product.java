@@ -19,7 +19,7 @@ public class Product {
     private String code;
     private Integer remaining;
     private String description;
-    private Integer deleted;
+    private Integer deleted = 0;
 
     public Product() {}
 

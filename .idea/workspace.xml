@@ -4,6 +4,7 @@
     <list default="true" id="edefb0c2-e0a4-4f49-afed-02d506fb3bbd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java" afterPath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java" afterPath="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java" />
     </list>
     <ignored path="assignment04A.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,33 +26,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProductController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
+            <state relative-caret-position="135">
+              <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
               <folding>
-                <element signature="e#1037#1046#0" expanded="true" />
-                <element signature="e#1598#1613#0" expanded="true" />
-                <element signature="e#1862#1877#0" expanded="true" />
-                <element signature="e#3410#3425#0" expanded="true" />
-                <element signature="e#3688#3703#0" expanded="true" />
-                <element signature="e#5468#5483#0" expanded="true" />
-                <element signature="e#5746#5761#0" expanded="true" />
-                <element signature="e#7056#7071#0" expanded="true" />
-                <element signature="e#7333#7348#0" expanded="true" />
-                <element signature="e#7625#7641#0" expanded="true" />
-                <element signature="e#7846#7862#0" expanded="true" />
+                <element signature="e#980#989#0" expanded="true" />
+                <element signature="e#1577#1592#0" expanded="true" />
+                <element signature="e#1841#1856#0" expanded="true" />
+                <element signature="e#2344#2359#0" expanded="true" />
+                <element signature="e#3524#3539#0" expanded="true" />
+                <element signature="e#3802#3817#0" expanded="true" />
+                <element signature="e#5590#5605#0" expanded="true" />
+                <element signature="e#5868#5883#0" expanded="true" />
+                <element signature="e#7176#7191#0" expanded="true" />
+                <element signature="e#7453#7468#0" expanded="true" />
+                <element signature="e#7745#7761#0" expanded="true" />
+                <element signature="e#7966#7982#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Product.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="315">
+              <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -81,6 +83,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java" />
       </list>
     </option>
   </component>
@@ -583,31 +586,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="135">
+          <caret line="68" column="46" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+          <folding>
+            <element signature="e#980#989#0" expanded="true" />
+            <element signature="e#1577#1592#0" expanded="true" />
+            <element signature="e#1841#1856#0" expanded="true" />
+            <element signature="e#2344#2359#0" expanded="true" />
+            <element signature="e#3524#3539#0" expanded="true" />
+            <element signature="e#3802#3817#0" expanded="true" />
+            <element signature="e#5590#5605#0" expanded="true" />
+            <element signature="e#5868#5883#0" expanded="true" />
+            <element signature="e#7176#7191#0" expanded="true" />
+            <element signature="e#7453#7468#0" expanded="true" />
+            <element signature="e#7745#7761#0" expanded="true" />
+            <element signature="e#7966#7982#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/controller/ProductController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/devfactory/assignment4/model/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="76" column="48" selection-start-line="76" selection-start-column="48" selection-end-line="76" selection-end-column="48" />
-          <folding>
-            <element signature="e#1037#1046#0" expanded="true" />
-            <element signature="e#1598#1613#0" expanded="true" />
-            <element signature="e#1862#1877#0" expanded="true" />
-            <element signature="e#3410#3425#0" expanded="true" />
-            <element signature="e#3688#3703#0" expanded="true" />
-            <element signature="e#5468#5483#0" expanded="true" />
-            <element signature="e#5746#5761#0" expanded="true" />
-            <element signature="e#7056#7071#0" expanded="true" />
-            <element signature="e#7333#7348#0" expanded="true" />
-            <element signature="e#7625#7641#0" expanded="true" />
-            <element signature="e#7846#7862#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="315">
+          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>

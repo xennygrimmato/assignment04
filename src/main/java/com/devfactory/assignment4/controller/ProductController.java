@@ -30,9 +30,10 @@ public class ProductController {
     ProductRepository productRepo;
 
     @RequestMapping("/products")
-    public ResponseEntity products(@RequestParam(value="name", required = false) String name) {
+    public ResponseEntity products() {
         List<Product> products = new ArrayList<Product>();
         for(Product p : productRepo.findAll()) {
+            if(p == null) continue;
             if (p.getDeleted() == 0) {
                 // if product is not deleted, add to list
                 products.add(p);
@@ -61,10 +62,12 @@ public class ProductController {
     }
 
     @RequestMapping(value="/products", method=RequestMethod.POST)
-    public ResponseEntity<Product> products(@RequestBody Product product) {
+    public ResponseEntity<Object> products(@RequestBody Product product) {
         try {
             if (isBlank(product.getCode())) {
-                //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+                Map<String,String> detailObject = new HashMap<String,String>();
+                detailObject.put("detail", "Not found.");
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
             Product p = new Product();
@@ -74,13 +77,13 @@ public class ProductController {
             if(product.getRemaining() == null) p.setRemaining(product.getRemaining());
 
             productRepo.save(p);
-            return new ResponseEntity<Product>(p, HttpStatus.CREATED);
+            return new ResponseEntity<Object>(p, HttpStatus.CREATED);
         } catch(Exception e) {
             // Log error
             LOGGER.error(e.getMessage());
         }
         //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<Product>(product, HttpStatus.CREATED);
+        return new ResponseEntity<Object>(product, HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.PUT)
@@ -142,7 +145,7 @@ public class ProductController {
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.PATCH)
-    public ResponseEntity patchProduct(@PathVariable int id, @RequestBody Product product) {
+    public ResponseEntity<Object> patchProduct(@PathVariable int id, @RequestBody Product product) {
         // update with given values
         try {
 
@@ -181,12 +184,12 @@ public class ProductController {
             }
 
             productRepo.save(p);
-            return new ResponseEntity<Product>(p, HttpStatus.OK);
+            return new ResponseEntity<Object>(p, HttpStatus.OK);
 
         } catch(Exception e) {
             LOGGER.error(e.getMessage());
         }
-        return new ResponseEntity<Product>(product, HttpStatus.OK);
+        return new ResponseEntity<Object>(product, HttpStatus.OK);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.DELETE)
