@@ -49,7 +49,7 @@ public class ProductController {
     public ResponseEntity<Product> products(@RequestBody Product product) {
         try {
             if (StringUtils.isBlank(product.getCode())) {
-                return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+                //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
             }
             // TODO: if product exists, then ???
             productRepo.save(product);
@@ -58,7 +58,8 @@ public class ProductController {
             // Log error
             LOGGER.error(e.getMessage());
         }
-        return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+        //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Product>(product, HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.PUT)
@@ -77,7 +78,7 @@ public class ProductController {
             if(StringUtils.isBlank(product.getCode())) {
                 // code is a compulsory field
                 // return BAD_REQUEST if it is not part of request body
-                return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+                //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
             } else {
                 p.setCode(product.getCode());
             }
@@ -167,12 +168,12 @@ public class ProductController {
 
             p.setDeleted(1);
             productRepo.save(p);
-            return new ResponseEntity<Object>(null, HttpStatus.NO_CONTENT);
+            return new ResponseEntity<Object>(null, HttpStatus.OK);
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
         }
         Map<String, String> empty = new HashMap<String, String>();
-        return new ResponseEntity<Object>(empty, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>(empty, HttpStatus.OK);
     }
 }
