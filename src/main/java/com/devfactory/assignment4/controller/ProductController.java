@@ -44,7 +44,7 @@ public class ProductController {
     public ResponseEntity<Object> getProduct(@PathVariable int id) {
         Product product = productRepo.findOne(id);
         if(product == null) {
-            return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Object>(null, HttpStatus.OK);
         }
         if(product.getDeleted() == 1) {
             return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
@@ -171,7 +171,7 @@ public class ProductController {
             if(p == null) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
-                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
+                return new ResponseEntity<Object>(detailObject, HttpStatus.OK);
             }
 
             p.setDeleted(1);
