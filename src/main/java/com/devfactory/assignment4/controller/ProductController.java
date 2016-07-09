@@ -56,7 +56,7 @@ public class ProductController {
             if (StringUtils.isBlank(product.getCode())) {
                 //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
             }
-            // TODO: if product exists, then ???
+
             productRepo.save(product);
             return new ResponseEntity<Product>(product, HttpStatus.CREATED);
         } catch(Exception e) {
@@ -64,7 +64,7 @@ public class ProductController {
             LOGGER.error(e.getMessage());
         }
         //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<Product>(product, HttpStatus.OK);
+        return new ResponseEntity<Product>(product, HttpStatus.CREATED);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.PUT)
