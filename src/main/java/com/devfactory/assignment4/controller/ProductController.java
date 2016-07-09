@@ -80,7 +80,7 @@ public class ProductController {
             if(p == null) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
-                return new ResponseEntity<Object>(detailObject, HttpStatus.OK);
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
             if(StringUtils.isBlank(product.getCode())) {
@@ -119,7 +119,7 @@ public class ProductController {
         } catch(Exception e) {
             LOGGER.error(e.getMessage());
         }
-        return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.PATCH)
@@ -132,7 +132,7 @@ public class ProductController {
             if(p == null) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
-                return new ResponseEntity<Object>(detailObject, HttpStatus.OK);
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
             if(!StringUtils.isBlank(product.getCode())) {
