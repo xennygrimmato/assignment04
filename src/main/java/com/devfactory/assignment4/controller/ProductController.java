@@ -56,11 +56,7 @@ public class ProductController {
             return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
         }
 
-        if(product.getDeleted() == 1) {
-            return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<Object>(product, HttpStatus.OK);
-        }
+        return new ResponseEntity<Object>(product, HttpStatus.OK);
     }
 
     @RequestMapping(value="/products", method=RequestMethod.POST)
@@ -102,7 +98,7 @@ public class ProductController {
             if(StringUtils.isBlank(product.getCode())) {
                 // code is a compulsory field
                 // return BAD_REQUEST if it is not part of request body
-                //return new ResponseEntity<Product>(product, HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
             } else {
                 p.setCode(product.getCode());
             }
