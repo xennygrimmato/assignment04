@@ -13,12 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import static org.apache.commons.lang.StringUtils.isBlank;
 
 @RequestMapping("/api")
 @RestController
@@ -31,15 +27,8 @@ public class ProductController {
 
     @RequestMapping("/products")
     public ResponseEntity products() {
-        List<Product> products = new ArrayList<Product>();
-        for(Product p : productRepo.findAll()) {
-            if(p == null) continue;
-            if (p.getDeleted() == 0) {
-                // if product is not deleted, add to list
-                products.add(p);
-            }
-        }
-        return new ResponseEntity(products, HttpStatus.OK);
+        Iterable p = productRepo.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(p);
     }
 
     @RequestMapping(value="/products/{id}", method=RequestMethod.GET)
@@ -64,20 +53,14 @@ public class ProductController {
     @RequestMapping(value="/products", method=RequestMethod.POST)
     public ResponseEntity<Object> products(@RequestBody Product product) {
         try {
-            if (isBlank(product.getCode())) {
+            if (product.getCode() == null) {
                 Map<String,String> detailObject = new HashMap<String,String>();
                 detailObject.put("detail", "Not found.");
                 return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
-            Product p = new Product();
-
-            if(!isBlank(product.getName())) p.setName(product.getName());
-            if(!isBlank(product.getCode())) p.setCode(product.getCode());
-            if(product.getRemaining() == null) p.setRemaining(product.getRemaining());
-
-            productRepo.save(p);
-            return new ResponseEntity<Object>(p, HttpStatus.CREATED);
+            productRepo.save(product);
+            return new ResponseEntity<Object>(product, HttpStatus.CREATED);
         } catch(Exception e) {
             // Log error
             LOGGER.error(e.getMessage());
@@ -105,34 +88,19 @@ public class ProductController {
                 return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
-            if(isBlank(product.getCode())) {
+            if(product.getCode() == null) {
                 // code is a compulsory field
                 // return BAD_REQUEST if it is not part of request body
-                return new ResponseEntity<Object>(null, HttpStatus.NOT_FOUND);
+                Map<String,String> detailObject = new HashMap<String,String>();
+                detailObject.put("detail", "Not found.");
+                return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             } else {
                 p.setCode(product.getCode());
             }
 
-            if (isBlank(product.getName())) {
-                p.setName("");
-            } else {
-                p.setName(product.getName());
-            }
-
-            if (isBlank(product.getDescription())) {
-                // description: default value = ""
-                p.setDescription("");
-            } else {
-                p.setDescription(product.getDescription());
-            }
-
-            if(product.getDeleted() == null) {
-                // deleted: default value = 0
-                p.setDeleted(0);
-            } else {
-                p.setDeleted(product.getDeleted());
-            }
-
+            p.setName(product.getName());
+            p.setDescription(product.getDescription());
+            p.setDeleted(product.getDeleted());
             p.setRemaining(product.getRemaining());
 
             productRepo.save(p);
@@ -163,15 +131,15 @@ public class ProductController {
                 return new ResponseEntity<Object>(detailObject, HttpStatus.NOT_FOUND);
             }
 
-            if(!isBlank(product.getCode())) {
+            if(product.getCode() != null) {
                 p.setCode(product.getCode());
             }
 
-            if(!isBlank(product.getName())) {
+            if(product.getName() != null) {
                 p.setName(product.getName());
             }
 
-            if(!isBlank(product.getDescription())) {
+            if(product.getDescription() != null) {
                 p.setDescription(product.getDescription());
             }
 
